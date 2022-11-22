@@ -9,7 +9,7 @@ namespace Robot.Tests
 {
     public class BoardTests
     {
-        private Board _board;
+        private IBoard _board;
 
         [SetUp]
         public void SetUp()

@@ -47,6 +47,9 @@
     <Compile Include="Board\IBoard.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Robot\MyRobot.cs" />
+    <Compile Include="Robot\FacingDirection.cs" />
+    <Compile Include="Robot\Turn.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

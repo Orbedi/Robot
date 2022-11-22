@@ -4,11 +4,13 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Robot
+namespace Robot.Robot
 {
-    public interface IBoard
+    public class TurnDirection
     {
-        int MAX_X { get; }
-        int MAX_Y { get; }
+        public enum Turn
+        {
+            Right, Left
+        }
     }
 }
