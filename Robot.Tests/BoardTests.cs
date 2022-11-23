@@ -20,13 +20,13 @@ namespace Robot.Tests
         [Test]
         public void MaxX_Equals5_ReturnsTrue()
         {
-            Assert.AreEqual(_board.MAX_X, 5);
+            Assert.AreEqual(5, _board.MAX_X);
         }
 
         [Test]
         public void MaxY_Equals5_ReturnsTrue()
         {
-            Assert.AreEqual(_board.MAX_Y, 5);
+            Assert.AreEqual(5, _board.MAX_Y);
         }
 
     }

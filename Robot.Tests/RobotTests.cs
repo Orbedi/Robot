@@ -57,6 +57,14 @@ namespace Robot.Tests
             Assert.AreEqual(5, _robot.Y);
         }
 
+        [Test]
+        public void ChangeDirection_TurnRightTwice_FacingDirectionEqualsSouth()
+        {
+            _robot.ChangeDirection(Turn.Right);
+            _robot.ChangeDirection(Turn.Right);
+            Assert.AreEqual(FacingDirections.South, _robot.FacingDirection);
+        }
+
         
     }
 }

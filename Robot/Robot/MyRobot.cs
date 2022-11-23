@@ -9,7 +9,7 @@ using static Robot.Robot.TurnDirection;
 
 namespace Robot
 {
-    public class MyRobot
+    public class MyRobot : IRobot
     {
         public int X { get; private set; }
         public int Y { get; private set; }
