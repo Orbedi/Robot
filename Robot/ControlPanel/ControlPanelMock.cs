@@ -1,11 +1,10 @@
 ﻿using Robot.Robot;
+using Robot.Robot.RobotState;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using static Robot.Robot.FacingDirection;
-using static Robot.Robot.TurnDirection;
 
 namespace Robot.ControlPanel
 {
@@ -19,7 +18,7 @@ namespace Robot.ControlPanel
         {
             IBoard board = new Board(5, 5);
 
-            _Robot = new MyRobot(1, 1, board, FacingDirections.North);
+            _Robot = new MyRobot(new NorthState(), 1, 1, board);
 
             _Directions = command.ToCharArray();
         }
@@ -31,8 +30,8 @@ namespace Robot.ControlPanel
                 switch (direction)
                 {
                     case 'F': _Robot.Move(); break;
-                    case 'R': _Robot.ChangeDirection(Turn.Right); break;
-                    case 'L': _Robot.ChangeDirection(Turn.Left); break;
+                    case 'R': _Robot.TurnRight(); break;
+                    case 'L': _Robot.TurnLeft(); break;
                 }
             }
         }
@@ -42,7 +41,7 @@ namespace Robot.ControlPanel
             StringBuilder str = new StringBuilder();
             str.AppendFormat("{0},", _Robot.X);
             str.AppendFormat("{0},", _Robot.Y);
-            str.AppendFormat("{0}", _Robot.FacingDirection);
+            str.AppendFormat("{0}", _Robot.State.GetState());
             return str.ToString();
         }
     }

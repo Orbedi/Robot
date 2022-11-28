@@ -52,8 +52,15 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Robot\IRobot.cs" />
     <Compile Include="Robot\MyRobot.cs" />
-    <Compile Include="Enums\FacingDirection.cs" />
-    <Compile Include="Enums\Turn.cs" />
+    <Compile Include="Robot\RobotState\EastState.cs" />
+    <Compile Include="Robot\RobotState\NorthEastState.cs" />
+    <Compile Include="Robot\RobotState\NorthState.cs" />
+    <Compile Include="Robot\RobotState\NorthWestState.cs" />
+    <Compile Include="Robot\RobotState\SouthEastState.cs" />
+    <Compile Include="Robot\RobotState\SouthState.cs" />
+    <Compile Include="Robot\RobotState\SouthWestState.cs" />
+    <Compile Include="Robot\RobotState\State.cs" />
+    <Compile Include="Robot\RobotState\WestState.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

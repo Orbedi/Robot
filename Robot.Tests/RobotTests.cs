@@ -1,6 +1,5 @@
 using NUnit.Framework;
-using static Robot.Robot.FacingDirection;
-using static Robot.Robot.TurnDirection;
+using Robot.Robot.RobotState;
 
 namespace Robot.Tests
 {
@@ -13,7 +12,7 @@ namespace Robot.Tests
         public void Setup()
         {
             _board = new Board(5, 5);
-            _robot = new MyRobot(1, 1, _board, FacingDirections.North);
+            _robot = new MyRobot(new NorthState(), 1, 1, _board);
         }
 
         [Test]
@@ -21,7 +20,7 @@ namespace Robot.Tests
         {
             Assert.AreEqual(1, _robot.X);
             Assert.AreEqual(1, _robot.Y);
-            Assert.AreEqual(FacingDirections.North, _robot.FacingDirection);
+            Assert.IsTrue(_robot.State is NorthState);
             Assert.AreEqual(_board, _robot.Board);
         }
 
@@ -35,16 +34,17 @@ namespace Robot.Tests
         [Test]
         public void ChangeDirection_East_FacingDirectionEqualsEast()
         {
-            _robot.ChangeDirection(Turn.Right);
-            Assert.AreEqual(FacingDirections.East, _robot.FacingDirection);
+            _robot.TurnRight();
+            Assert.IsTrue(_robot.State is NorthEastState);
         }
 
         [Test]
         public void ChangeDirectionAndMove_MoveToEast_Xequals2()
         {
-            _robot.ChangeDirection(Turn.Right);
+            _robot.TurnRight();
             _robot.Move();
             Assert.AreEqual(2, _robot.X);
+            Assert.AreEqual(2, _robot.Y);
         }
 
         [Test]
@@ -60,9 +60,9 @@ namespace Robot.Tests
         [Test]
         public void ChangeDirection_TurnRightTwice_FacingDirectionEqualsSouth()
         {
-            _robot.ChangeDirection(Turn.Right);
-            _robot.ChangeDirection(Turn.Right);
-            Assert.AreEqual(FacingDirections.South, _robot.FacingDirection);
+            _robot.TurnRight();
+            _robot.TurnRight();
+            Assert.IsTrue(_robot.State is EastState);
         }
 
         
