@@ -20,7 +20,7 @@ namespace Robot.Robot.RobotState
 
         public override void TurnRight()
         {
-            this._Robot.TransitionTo(new SouthEastState());
+            this._Robot.TransitionTo(new NorthWestState());
         }
 
         public override string GetState()

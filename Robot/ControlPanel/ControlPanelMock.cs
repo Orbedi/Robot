@@ -1,4 +1,5 @@
 ﻿using Robot.Robot;
+using Robot.Robot.RobotCommand;
 using Robot.Robot.RobotState;
 using System;
 using System.Collections.Generic;
@@ -12,7 +13,8 @@ namespace Robot.ControlPanel
     public class ControlPanelMock : IControlPanel
     {
         private char[] _Directions;
-        private IRobot _Robot;
+        private static IRobot _Robot;
+        private Dictionary<char, Command> Commands;
 
         public void ReadCommand(string command = "")
         {
@@ -21,18 +23,15 @@ namespace Robot.ControlPanel
             _Robot = new MyRobot(new NorthState(), 1, 1, board);
 
             _Directions = command.ToCharArray();
+
+            CreateCommands();
         }
 
         public void ExecuteCommand()
         {
             foreach (char direction in _Directions)
             {
-                switch (direction)
-                {
-                    case 'F': _Robot.Move(); break;
-                    case 'R': _Robot.TurnRight(); break;
-                    case 'L': _Robot.TurnLeft(); break;
-                }
+                Commands[direction].Execute();
             }
         }
 
@@ -43,6 +42,15 @@ namespace Robot.ControlPanel
             str.AppendFormat("{0},", _Robot.Y);
             str.AppendFormat("{0}", _Robot.State.GetState());
             return str.ToString();
+        }
+
+        private void CreateCommands()
+        {
+            Commands = new Dictionary<char, Command>() {
+                    { 'F', new MoveCommand(_Robot) },
+                    { 'R', new TurnRightCommand(_Robot) },
+                    { 'L', new TurnLeftCommand(_Robot) }
+                };
         }
     }
 }

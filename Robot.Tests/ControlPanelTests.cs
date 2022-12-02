@@ -27,6 +27,7 @@ namespace Robot.Tests
         [TestCase("FF", "1,3,North")]
         [TestCase("RFF", "3,3,NorthEast")]
         [TestCase("LFF", "1,1,NorthWest")]
+        [TestCase("RFFFFF", "5,5,NorthEast")]
         [TestCase("RRLRRR", "1,1,South")]
         [TestCase("FFRFLFLF", "2,5,NorthWest")]
         [TestCase("FFFFRFFFFLLL", "1,5,West")]
