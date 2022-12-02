@@ -22,5 +22,5 @@ FFRFLFLF
 ```
 The result:
 ```
-1,4,West
+2,5,NorthWest
 ```
